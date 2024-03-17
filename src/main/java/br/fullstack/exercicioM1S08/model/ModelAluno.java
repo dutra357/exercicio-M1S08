@@ -35,4 +35,13 @@ public class ModelAluno {
         alunos.add(aluno);
         return aluno;
     }
+
+    public static ModelAluno buscarPorId(Integer id) throws Exception {
+        for (ModelAluno aluno : alunos) {
+            if (aluno.getId().equals(id)) {
+                return aluno;
+            }
+        }
+        throw new Exception("Aluno não cadastrado.");
+    }
 }

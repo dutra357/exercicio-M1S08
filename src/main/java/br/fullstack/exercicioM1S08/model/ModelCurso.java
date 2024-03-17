@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.ui.Model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class ModelCurso {
 
     private  Integer cargaHoraria;
 
+    private List<ModelAluno> alunosMatriculados = new ArrayList<>();
+
 
     private Integer getNextId() {
         return nextId++;
@@ -33,6 +36,19 @@ public class ModelCurso {
         curso.id = curso.getNextId();
         cursos.add(curso);
         return curso;
+    }
+
+    public static ModelCurso buscarPorId(Integer id) throws Exception {
+        for (ModelCurso curso : cursos) {
+            if (curso.getId().equals(id)) {
+                return curso;
+            }
+        }
+        throw new Exception("Curso não encontrado.");
+    }
+
+    public static void matricular(ModelCurso curso, ModelAluno aluno) {
+        curso.getAlunosMatriculados().add(aluno);
     }
 
 }

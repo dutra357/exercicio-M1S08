@@ -1,5 +1,6 @@
 package br.fullstack.exercicioM1S08.controller;
 
+import br.fullstack.exercicioM1S08.model.ModelAluno;
 import br.fullstack.exercicioM1S08.model.ModelCurso;
 import br.fullstack.exercicioM1S08.services.CursoService;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +19,17 @@ public class CursoController {
 
 
     @GetMapping
-    public List<ModelCurso> get(){
+    public List<ModelCurso> get() {
         return cursoService.buscarCursos();
     }
 
     @PostMapping
     public ModelCurso post(@RequestBody ModelCurso curso) throws Exception {
         return cursoService.cadastrarCurso(curso);
+    }
+
+    @PostMapping("{id}/adiciona-aluno")
+    public ModelCurso matriculaAluno(@PathVariable Integer id, @RequestBody ModelAluno aluno) throws Exception {
+        return cursoService.matricularAluno(id, aluno.getId());
     }
 }
