@@ -30,7 +30,7 @@ public class ModelCurso {
     }
 
     public static ModelCurso cadastrar(ModelCurso curso){
-        curso.id = curso.getId();
+        curso.id = curso.getNextId();
         cursos.add(curso);
         return curso;
     }
