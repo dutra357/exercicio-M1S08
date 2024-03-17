@@ -19,7 +19,7 @@ public class AlunoService {
     }
 
 
-    
+
     private boolean validar (ModelAluno aluno) throws Exception {
         if (aluno.getNome() == null || aluno.getNome().isBlank()) {
             throw new Exception("Nome é impresacindível!");
